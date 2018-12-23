@@ -1,0 +1,4 @@
+sudo su
+passwd
+wget http://software.virtualmin.com/gpl/scripts/install.sh
+/bin/sh install.sh --minimal
