@@ -2,3 +2,20 @@ sudo su
 passwd
 wget http://software.virtualmin.com/gpl/scripts/install.sh
 /bin/sh install.sh --minimal
+
+//add swap
+fallocate -l 1G /swapfile
+ls -lh /swapfile
+chmod 600 /swapfile
+ls -lh /swapfile
+mkswap /swapfile
+swapon /swapfile
+swapon --show
+free -h
+cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+nano /etc/sysctl.conf
+
+vm.swappiness=10
+vm.vfs_cache_pressure=50
+
